@@ -1,0 +1,14 @@
+{
+  "root": "dist/",
+  "canonical_host": "tel-numbers.herokuapp.com",
+  "clean_urls": true,
+  "https_only": true,
+  "headers": {
+    "/": {
+      "Cache-Control": "public, max-age=86400"
+    },
+    "/assets/**": {
+      "Cache-Control": "public, max-age=30758400"
+    }
+  }
+}

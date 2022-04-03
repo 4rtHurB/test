@@ -1,0 +1,7 @@
+<Header/>
+<div class="container">
+  {{outlet}}
+</div>
+{{#unless this.auth.isAuthorized}}
+  <Footer/>
+{{/unless}}

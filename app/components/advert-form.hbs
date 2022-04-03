@@ -1,0 +1,54 @@
+{{#if this.advert}}
+  <BsForm class="advert-form" @formLayout="vertical" @model={{this.advert}} @onSubmit={{fn this.submit}} as |form|>
+    <div class="form-group">
+      <BsAlert
+              @visible={{this.isShowMessage}}
+              @fade={{true}}
+              @type={{this.messageType}}
+              @dismissible={{true}}>
+        {{this.messageText}}
+      </BsAlert>
+    </div>
+
+    <form.element
+            @property="phone"
+            @label="Телефон"
+            @showOwnValidation={{this.isShowValidation}}
+            as |el|>
+        <InputPastTooltip
+                @id={{el.id}}
+                @value={{el.value}}
+                @type="tel"
+                @validation={{el.validation}}
+                @regExp={{this.phoneRegExp}}
+                @onChange={{fn el.setValue}}
+                @onKeyUp={{fn this.onPhoneChange}}
+        />
+    </form.element>
+    <form.element
+            @controlType="power-select"
+            @property="gender"
+            @label="Чоловік/Жінка"
+            @options={{this.genderOptions}}
+    />
+    <form.element
+            @label="Посилання"
+            @property="link"
+            @showOwnValidation={{this.isShowValidation}}
+            as |el|>
+      <InputPastTooltip
+              @id={{el.id}}
+              @value={{el.value}}
+              @type="url"
+              @validation={{el.validation}}
+              @regExp={{this.urlRegExp}}
+              @onChange={{fn el.setValue}}
+      />
+    </form.element>
+    <form.submitButton {{on 'click' this.onStartEdit}} class='mr-3'>Додати</form.submitButton>
+    <BsButton @type="secondary" @outline={{true}} @onClick={{fn this.clearForm}}>Очистити</BsButton>
+  </BsForm>
+{{/if}}
+
+
+

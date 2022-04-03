@@ -1,0 +1,32 @@
+<BsNavbar
+        @type="light"
+        @backgroundColor="light"
+        @collapsed={{true}}
+        @onCollapse={{fn (mut this.collapsed) true}}
+        @onExpand={{fn (mut this.collapsed) false}} as |navbar|
+>
+  <div class="navbar-header">
+    <LinkTo @route='index' class="navbar-brand">
+      <img src="/assets/images/site-logo192x192.png" width="30" height="30" class="d-inline-block align-top" alt="">
+      <span>Номери телефонів</span>
+    </LinkTo>
+  </div>
+
+
+
+  {{#if this.auth.isAuthenticated}}
+    {{navbar.toggle}}
+    <navbar.content>
+      <navbar.nav as |nav|>
+        <span class="mr-2">
+          Ви увійшли як, <b>{{this.auth.currentUserName}}</b>
+        </span>
+      </navbar.nav>
+      <navbar.nav as |nav|>
+        <nav.item>
+          <BsButton @type="dark" @outline={{true}} @onClick={{fn this.signOut}}>Вихід з акаунту</BsButton>
+        </nav.item>
+      </navbar.nav>
+    </navbar.content>
+  {{/if}}
+</BsNavbar>

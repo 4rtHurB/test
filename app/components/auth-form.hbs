@@ -1,0 +1,25 @@
+{{#if this.auth.isAuthenticated}}
+  {{#unless this.auth.isAuthorized}}
+    <BsForm @formLayout="vertical" @model={{this}} as |form|>
+      <div class="alert alert-danger" role="alert">
+        <h4 class="alert-heading">Доступ з облікового запису закритий</h4>
+        <p>Нажаль, доступ до сайту з Вашим обліковим записом Google закритий. Спробуйте увійти у інший обліковий запис.
+        </p>
+        <hr>
+        <p class="mb-0"><BsButton @type="danger"  @onClick={{fn this.signIn}}>Увійти з іншого облікового запису</BsButton></p>
+      </div>
+    </BsForm>
+  {{/unless}}
+{{else}}
+  <BsForm @formLayout="vertical" @model={{this}} as |form|>
+    <div class="alert alert-success" role="alert">
+      <h4 class="alert-heading">Увійдіть в обілковий запис Google</h4>
+      <p>Для того щоб продовжити, увійдіть в обліковий запис Google. Обліковий запис необхідний для редагування таблиць Google.
+        <b>Жодні ваші дані не використовуються у інших цілях.</b>
+      </p>
+      <hr>
+      <p class="mb-0"><BsButton @type="info"  @onClick={{fn this.signIn}}>Увійти з Google</BsButton></p>
+    </div>
+  </BsForm>
+{{/if}}
+

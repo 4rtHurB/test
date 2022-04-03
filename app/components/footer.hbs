@@ -1,0 +1,19 @@
+<BsNavbar
+        class="fixed-bottom"
+        @type="light"
+        @backgroundColor="light"
+        @collapsed={{false}}
+        as |navbar|
+>
+  <navbar.content />
+
+    <div class="form-inline my-2 my-lg-0">
+      <navbar.content>
+        <navbar.nav as |nav|>
+          <LinkTo @route='privacy' class="p-1">
+            Політика конфіденційності
+          </LinkTo>
+        </navbar.nav>
+      </navbar.content>
+    </div>
+</BsNavbar>

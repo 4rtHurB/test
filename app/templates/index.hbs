@@ -1,0 +1,7 @@
+{{#if this.auth.isAuthorized}}
+  <div class="content">
+    <AdvertForm class="olx-advert-form"/>
+  </div>
+{{else}}
+  <AuthForm/>
+{{/if}}
